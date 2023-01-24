@@ -136,12 +136,19 @@ html, body {
     
   }
 
+  #enssat {
+    background-color: white;
+    padding: 50px;
+  }
+
   li {
     color: white;
   }
 
   #letseat {
     background-color: white;
+    padding: 50px;
+    margin: 20px;
   }
 
   #letseat h3 {
