@@ -1,7 +1,12 @@
 /* || General setup */
+@font-face {
+    font-family: ravie;
+    src: url(RAVIE.TTF);
+  }
 
 html, body {
     margin: 0;
+    font-family: ravie;
     padding: 0;
     color: white, !important;
   }
@@ -19,12 +24,12 @@ html, body {
   /* || typography */
   
   h1, h2, h3 {
-    font-family: 'Sonsie One', cursive;
+    /*font-family: 'Sonsie One', cursive;*/
     color: white;
   }
   
   p, input, li {
-    font-family: 'Open Sans Condensed', sans-serif;
+    /*font-family: 'Open Sans Condensed', sans-serif;*/
     color: white;
 
   }
