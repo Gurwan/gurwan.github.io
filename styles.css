@@ -57,7 +57,7 @@ html, body {
   
   nav {
     height: 50px;
-    background-color: #ff80ff;
+    background-color: rgb(35, 221, 181);
     display: flex;
     margin-bottom: 10px;
   }
