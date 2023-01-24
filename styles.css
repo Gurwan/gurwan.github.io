@@ -79,6 +79,7 @@ html, body {
   nav li {
     display: inline;
     text-align: center;
+    color: white;
     flex: 1;
   }
   
@@ -132,6 +133,19 @@ html, body {
   
   aside li {
     padding-bottom: 10px;
+    
+  }
+
+  li {
+    color: white;
+  }
+
+  #letseat {
+    background-color: white;
+  }
+
+  #letseat h3 {
+    color: black;
   }
   
   footer {
