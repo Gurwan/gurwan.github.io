@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+<!-- Responsive -->
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+<meta rel="stylesheet" media="screen and (max-width: 1280px)" href="../petiteResolution.css"/>
+<!-- Title -->
+<title>JS_TP_2</title> 
+</head> 
+
+<body> 
+
+<h1>JS_TP_2</h1>	
+Vous avez compris? Pour chaque exercice, faite part de votre conclusion à votre encadrant. (N'attendez pas qu'il vous sollicite, exprimez-vous!)<br>
+<em>So you think that you've got it? For each exercise, tell it to your teacher. (Don't wait for her/him to ask you!)</em>.
+
+
+<h2>Callbacks : Introducing SetInterval and ClearInterval</h2>
+Produisez une page html "tp_js_2_exo1.html" présentant un compteur initialisé à 10 secondes et comptant à rebours, à raison d’une unité par seconde.
+
+Le décompte doit s’arrêter à 0 secondes. Vous utiliserez pour cela la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" >setInterval</a> et <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval">clearInterval</a>.
+<br>
+<em>Produce a web page presenting a counter decreasing from 10 to 0 each second. Be carreful that this counter counts to 0, no more, no less. You should use <a href="https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/setInterval" >setInterval</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval">clearInterval</a>.</em>
+
+
+<h2>Let's move : Setinterval & Canevas</h2>
+Produisez une page html "tp_js_2_exo2.html" présentant un carré rouge (50px * 50px) se déplaçant du bord gauche d'un canevas (600x600) vers le bord
+droit à raison de 10 pixels par dixième de seconde. Attention, le carré doit s'arrêter une fois que son bord droit a touché le bord droit du canevas.
+<br>
+<em>
+Produce a web page presenting a red square (50x50) moving in a Canevas element (600x600) from the left side to the right with a speed of 10 pixels per 1/10 seconds. Be carrefull, the square should stop moving when its right side collides with the canevas' right side.
+</em>
+
+<h2>Wait a minute! </h2>
+Produisez une page html "tp_js_2_exo3.html" présentant le même carré rouge se déplaçant du bord gauche d'un canevas vers le bord droit à la même vitesse... mais cette fois, le carré débuttera son déplacement 2 secondes après la fin du
+chargement de la page.
+<br>
+<em>
+	Produce a web page presenting the same red square moving in the same canevas with same speed...but this time, the square will start  2 seconds after the full loading of the page.
+</em>
+
+<h2>"Play it again, Sam" : introducing objects</h2>
+Produisez une page html "tp_js_2_exo4.html" présentant 3 carrés rouges se déplaçant du bord gauche du canvas vers le bord
+droit à raison de 10 pixels par dixième de seconde. Les départs des carrés seront espacés de 1 seconde, 4 secondes
+après la fin du chargement de la page.
+
+<ul>
+<li>Utilisez maintenant des Objets. Chaque carré est un objet qui a la charge de s'effacer du canevas (méthode "clear"), de modifier ses coordonnées en fonction de l'horloge, de sa vitesse et de sa position (méthode "update") et de s'afficher (méthode "draw"). </li> 
+<li>N'utilisez qu'une seule invocation de SetInterval pour tout le programme (cf <a href="boucleDeJeu.html">ce code</a>). </li>
+</ul>
+<br>
+<em>
+Produce a web page with 3 red squares moving with same speed but starting at loading time +0, +1sec and +4sec.
+<ul>
+	<li>Use objects : Each square is an object with 3 methods : clear (the square clears itself from the canevas), update (the square modifies its coordinates acording to speed, time and coordiantes) and draw (the square draws itself on the canevas).</li>
+	<li>There shall be only one "SetInterval" invocation in the entire programm (see <a href="boucleDeJeu.html">ce code</a>).</li>
+</ul>
+</em>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="timer">
+
+    </div>
+    <script>
+        document.getElementById("timer").innerText = "10";
+        document.getElementById("timer").style.fontSize = "90px"
+        document.getElementById("timer").style.textAlign = "center"
+        
+        interval = setInterval(changeTimer,1000);
+
+        function changeTimer(){
+            cur = parseInt(document.getElementById("timer").innerText);
+            if(cur > 0){
+                cur--;
+                document.getElementById("timer").innerText = cur.toString();
+            } else {
+                h3 = document.createElement("h3");
+                h3.innerText = "timer is ended";
+                h3.style.color = "red"
+                h3.style.fontSize = "120px"
+                h3.style.textAlign = "center"
+                document.getElementById("timer").parentNode.appendChild(h3)
+                clearInterval(interval)
+            }
+        }
+
+    </script>    
+</body>
+</html>

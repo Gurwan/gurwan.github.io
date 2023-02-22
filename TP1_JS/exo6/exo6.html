@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <figure>
+        <audio id="player" controls preload loop tabindex="0" ontimeupdate="updateCircle()">
+            <source type="audio/mp3" src="./Bailar.mp3"/> 
+            Your  browser does not support HTML5 audio.
+        </audio>
+
+        <div style="display:relative">
+            <div id="circle">
+
+            </div>
+        
+            <div id="myPlayer">
+                <div id="off">
+        
+                </div>
+                <div id="on2" style="display: none;">
+    
+                </div>
+            </div>
+        </div>
+        
+    </figure>
+    <script>
+        document.getElementById("myPlayer").addEventListener("click",changeCommand);
+        audio = document.getElementById("player");
+
+
+        function updateCircle(){
+            percentage = ((audio.currentTime)/(audio.duration));
+        }
+
+        function changeCommand(){
+            if(document.getElementById("off") != null){
+                document.getElementById("off").id = 'on'
+                document.getElementById("on2").style.display = 'block'
+                player.play();
+            } else {
+                document.getElementById("on").id = 'off'
+                document.getElementById("on2").style.display = 'none'
+                player.pause();
+            }
+        }
+    </script>
+</body>
+</html>
+

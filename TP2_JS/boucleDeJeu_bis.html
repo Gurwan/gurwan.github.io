@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<title>classical game loop</title>
+</style>
+</head>
+<body>
+<canvas id="gameField"></canvas>
+</body>
+<script>
+	
+	//requestAnimationFrame method conveniently replace Setinterval for all animation purpose. It is optimized for 30frame per seconds rendering.
+    const animFrame = window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            window.oRequestAnimationFrame      ||
+            window.msRequestAnimationFrame     ||
+            null ;
+
+	const cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+
+  	let wallClockId;
+	
+	const canvas = document.getElementById("gameField");
+	canvas.width = 600;
+	canvas.height = 600;
+	const context = canvas.getContext("2d");
+
+	let wallClock = 0;
+		
+	// 
+	const coinWidth= 1000;
+	const coinHeight= 100;	
+	const coinNumberOfFrame=10;
+	const coinImage = new Image();	
+	coinImage.src = "images/coin-sprite-animation.png";
+
+	class Ball {
+		constructor(context, canvasWidth, canvasHeight, radius, x, y, xSpeed, ySpeed, delay){
+			this.context=context;
+			this.canvasWidth=canvasWidth;
+			this.canvasHeight=canvasHeight;
+			this.radius=radius;
+			this.x=x;
+			this.y=y;
+			this.xSpeed=xSpeed;
+			this.ySpeed=ySpeed;
+			this.delay=delay;
+		}
+		clear(){
+			this.context.fillStyle = "white";
+			this.context.beginPath();
+			this.context.arc(this.x,this.y, this.radius,0,2*Math.PI,1);
+			this.context.fill();
+		}
+		draw(){
+			this.context.fillStyle = "red";
+			this.context.beginPath();
+			this.context.arc(this.x,this.y, this.radius,0,2*Math.PI,1);
+			this.context.fill();
+		}
+		update(){
+			if(this.x<0 || this.x>this.canvasWidth){
+				this.xSpeed = (-1) * this.xSpeed;
+			}
+			if(this.y<0 || this.y>this.canvasHeight){
+				this.ySpeed = (-1) * this.ySpeed;
+			}
+			this.x=this.x + this.xSpeed;
+			this.y=this.y + this.ySpeed;
+
+		}
+	}
+
+
+
+
+	class Coin {
+		constructor(context,image,width, height,x,y,speed, numberOfFrames, delay){
+			this.context=context;
+			this.image=image;
+			this.width=width;
+			this.height=height;
+			this.x=x;
+			this.y=y;
+			this.speed=speed;
+			this.numberOfFrames=numberOfFrames;
+			this.frameIndex=0;
+			this.delay=delay;
+			this.hasStarted=false;
+		}
+
+		clear(){
+			this.context.clearRect(this.x, this.y, this.width, this.height);
+		}
+
+		update(){
+			if((this.hasStarted == false) && (this.delay<wallClock)){
+				console.log("starting");
+				this.hasStarted=true;
+			}
+
+
+			if( (this.hasStarted == true) && (wallClock%this.speed == 0)){
+				if (this.frameIndex < this.numberOfFrames - 1) {	
+					this.frameIndex += 1;
+				}else {
+					this.frameIndex = 0;
+				}
+        	}
+		}
+
+		draw(){
+			this.context.drawImage(
+		    	this.image,
+		    	this.frameIndex * this.width / this.numberOfFrames,
+		    	0,
+		    	this.width / this.numberOfFrames,
+		    	this.height,
+		    	this.x,
+		    	this.y,
+		    	this.width / this.numberOfFrames,
+		    	this.height
+		    	);
+		}
+
+
+	}
+
+
+
+	const objectsInGame = new Array();
+
+    const coin1 = new Coin(context,coinImage,coinWidth, coinHeight,100,100,2, coinNumberOfFrame,0);
+   	const coin2 = new Coin(context,coinImage,coinWidth, coinHeight,200,100,4, coinNumberOfFrame,100);
+   	const coin3 = new Coin(context,coinImage,coinWidth, coinHeight,100,200,6, coinNumberOfFrame,200);
+
+   	objectsInGame.push(coin1);
+   	objectsInGame.push(coin2);
+   	objectsInGame.push(coin3);
+
+   	const ball1 = new Ball(context,canvas.width,canvas.height, 10,200,200,1,-1,0);
+	objectsInGame.push(ball1);
+
+
+	function clearGame(){
+			objectsInGame.forEach(element => element.clear());
+	}
+
+
+	function updateGame(){
+		wallClock += 1;
+		objectsInGame.forEach(element => element.update());
+	}
+	
+
+	function drawGame(){
+		objectsInGame.forEach(element => element.draw());
+	}
+	
+	
+	 function mainloop(){
+	 	clearGame();
+        updateGame();
+        drawGame();
+        
+        wallClockId = animFrame( mainloop );
+    };
+    
+   
+
+    // start the mainloop
+    animFrame( mainloop );
+    canvas.addEventListener("click",(e)=>{cancelAnimationFrame(wallClockId)})
+</script>
+</html>
+
+    
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+<!-- Responsive -->
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+<meta rel="stylesheet" media="screen and (max-width: 1280px)" href="petiteResolution.css"/>
+<!-- Title -->
+<title>WebWorkers</title> 
+</head> 
+
+<body> 
+  <p>
+  Here is a sample code for using a <a href="https://developer.mozilla.org/fr/docs/Web/API/Web_Workers_API/Utilisation_des_web_workers" >Web Worker</a>. In short, Web Workers are a simple means for web content to run scripts in background threads. 
+</p>
+<p>
+  Here the task is to multiply 2 members : when one of the field text is changed, the web worker is notified and perform its (background) task.
+</p>
+<p>
+  Notice that web workers have workspace of their own. They cannot access directly the DOM neither. In order to pass parameters to and from the web worker, a messaging mecanism is used. 
+</p>
+
+
+
+	 <form>
+        <div>
+          <label for="number1">Multiply number 1: </label>    
+          <input type="text" id="number1" value="0">
+        </div>
+        <div>
+          <label for="number2">Multiply number 2: </label>   
+          <input type="text" id="number2" value="0">
+        </div>
+      </form>
+
+      <p class="result">Result: 0</p>
+
+  <script src="main.js"></script>
+
+  <h1>What do I expect from you? (ask for a live demo)</h1>
+  <p>
+  Create a web worker that will produce random 2D coordinates at random time (with mean time = 1sec). The webpage should display a red spot at those coordinates.
+  </p>
+  <p>
+  Then, create 10 web workers that will produce random 2D coordinates at random time (with mean time = 1sec). The webpage should display a  spot at those coordinates with a different color for each web worker. You must used Object Oriented Programming.
+</p>
+</body>
+</html>

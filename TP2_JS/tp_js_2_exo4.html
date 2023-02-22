@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+        <canvas id="canva" style="border: 1px solid black;"></canvas>
+    </div>
+    <script>
+        class Square {
+            constructor(x,y,speed,context,width,height,number){
+                this.x = x;
+                this.y = y;
+                this.speed = speed;
+                this.context = context;
+                this.width = width;
+                this.height = height;
+                this.number = number;
+            }
+
+            clear(){
+                this.context.clearRect(this.x-1,this.y-1,this.width+1,this.height+1);
+            }
+
+            update(){
+                if(this.x + this.width < 600){
+                    this.x += 1
+                }
+            }
+
+            draw(){
+                this.context.fillRect(this.x,this.y,this.width,this.height)
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded",begin);
+        let squares = [];
+
+        canvas = document.getElementById("canva");
+        canvas.setAttribute("width",600);
+        canvas.setAttribute("height",600);
+        context = canvas.getContext("2d");
+        context.fillStyle = "red"
+        speed = 100/1000;
+
+        squares.push(new Square(0,125,speed,context,50,50,1));
+        squares.push(new Square(0,275,speed,context,50,50,2));
+        squares.push(new Square(0,425,speed,context,50,50,3));
+
+        clock = 1;
+
+        var interval;
+
+        function begin(){
+            squares.forEach(e => {
+                e.draw()
+            });
+            setTimeout(start,4000)
+        }
+
+        function start(){
+            interval = setInterval(loop,1000/1000);
+        }
+
+        function end(){
+            clearInterval(interval)
+        }
+
+        function loop(){
+            resetSquare();
+            moveSquare();
+            drawSquare();    
+            isEnd = true;
+            squares.forEach(e => {
+                if(e.x + e.width <= 600){
+                    isEnd = false;
+                }
+            })
+            if(isEnd){
+                end();
+            }
+        }
+
+        function resetSquare(){
+            squares.forEach(e => {
+                e.clear();
+            })
+        }
+
+        function moveSquare(){
+            squares.forEach(e => {
+                if((e.number*100) <= clock){
+                    e.update();
+                }
+            });
+            clock++;
+        }
+
+        function drawSquare(){
+            squares.forEach(e => {
+                e.draw();
+            });       
+        }
+
+    </script>
+</body>
+</html>

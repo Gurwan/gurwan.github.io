@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+        <canvas id="canva" style="border: 1px solid black;"></canvas>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",begin);
+        let canvas;
+
+        const event = new Event('collision');
+
+        var interval;
+
+        let squareY = 275;
+        let squareX = 0;
+        let speed = 0;
+
+        function begin(){
+            canvas = document.getElementById("canva");
+            canvas.setAttribute("width",600);
+            canvas.setAttribute("height",600);
+            context = canvas.getContext("2d");
+            context.fillStyle = "red"
+            speed = 100/10;
+            context.fillRect(squareX,squareY,50,50)
+            setTimeout(start,2000)
+        }
+
+        function start(){
+            interval = setInterval(move,1000/10);
+        }
+
+        function end(){
+            clearInterval(interval)
+        }
+
+        function move(){
+            resetSquare();
+            moveSquare();
+            drawSquare();    
+        }
+
+        function resetSquare(){
+            context.clearRect(squareX-1,squareY-1,52,52);
+        }
+
+        function moveSquare(){
+            if(squareX + 50 >= 600){
+                end();
+            } else {
+                squareX += 50
+            }
+        }
+
+        function drawSquare(){
+            context.fillRect(squareX,squareY,50,50)
+        }
+
+    </script>
+</body>
+</html>
